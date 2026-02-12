@@ -1,75 +1,107 @@
-
-/* General Body and Typography - Minimal Working Version */
+/* General Body and Typography */
 body {
-    font-family: Arial, sans-serif; /* Standard web-safe font */
+    font-family: 'Open Sans', sans-serif; /* Modern sans-serif for body */
     margin: 0;
     padding: 0;
-    background-color: #FDF4F7; /* Very light, soft pink background */
-    color: #333333; /* Dark grey for default text */
-    line-height: 1.5;
+    background-color: #FBF0E4; /* Soft, warm cream background */
+    color: #444444; /* Darker grey for better contrast */
+    line-height: 1.6; /* Increased for readability */
     scroll-behavior: smooth;
 }
 
 header {
-    background-color: #FFC0CB; /* Soft Pink */
+    background: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 100%); /* Elegant warm gradient */
     color: white;
     text-align: center;
-    padding: 2em 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 3em 0; /* More vertical padding */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Pronounced shadow for depth */
+    position: relative; /* For potential decorative elements */
+    overflow: hidden; /* To contain pseudo-elements */
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1); /* Subtle white overlay */
+    border-radius: 50%;
+    transform: rotate(45deg); 
+    z-index: 0;
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
 }
 
 h1 {
-    font-size: 2.5em;
+    font-family: 'Playfair Display', serif; /* Elegant serif for headings */
+    font-size: 3.8em; /* Larger, more impactful */
     margin-bottom: 0.1em;
     color: white;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4); /* Stronger, deeper shadow */
+    letter-spacing: 0.05em; /* Slightly wider letter spacing */
 }
 
 .subtitle {
-    font-size: 1.1em;
-    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.4em; /* Larger subtitle */
+    color: rgba(255, 255, 255, 0.95); /* Better contrast */
+    max-width: 700px;
+    margin: 0.8em auto 0; /* Centered with more space */
+    font-style: italic;
 }
 
 h2 {
-    font-size: 2em;
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
-    color: #8A2BE2; /* A shade of purple */
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8em; /* Larger section headings */
+    margin-top: 2.5em; /* More space above sections */
+    margin-bottom: 0.8em;
+    color: #8A2BE2; /* Keeping a strong purple accent */
+    text-align: center;
 }
 
 p {
-    font-size: 1em;
-    margin-bottom: 1em;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+    margin-bottom: 1.2em;
+    color: #555555;
 }
 
-/* Timeline Section - Minimal */
+/* Timeline Section */
 .timeline {
-    max-width: 800px;
-    margin: 3em auto;
-    padding: 0 15px;
+    max-width: 900px; /* Wider timeline */
+    margin: 4em auto; /* More vertical space */
+    padding: 0 20px;
     position: relative;
 }
 
 .timeline::before {
     content: '';
     position: absolute;
-    width: 2px;
-    background-color: #FF69B4; /* Hot Pink */
+    width: 4px; /* Thicker line */
+    background: linear-gradient(to bottom, #FF69B4 0%, #CD5C5C 100%); /* Pink to Indian Red gradient */
     top: 0;
-    bottom: auto; /* Controlled by JS now */
-    height: var(--timeline-line-height, 100%); /* Height controlled by JS variable */
+    bottom: auto; 
+    height: var(--timeline-line-height, 100%); 
     left: 50%;
-    margin-left: -1px;
+    margin-left: -2px; /* Adjust for thicker line */
     z-index: 0;
+    box-shadow: 0 0 12px rgba(255, 105, 180, 0.5); /* Stronger glow */
+    border-radius: 2px;
 }
 
 .timeline-event {
-    padding: 10px 30px;
+    padding: 15px 40px;
     position: relative;
     width: 45%;
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    margin-bottom: 2em;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Slower transition */
+    margin-bottom: 3em; /* More space between events */
 }
 
 .timeline-event.visible {
@@ -80,51 +112,71 @@ p {
 .timeline-event::after {
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
-    right: -11px;
-    background-color: #FFD1DC; /* Pastel Pink */
-    border: 3px solid #FF69B4; /* Hot Pink border */
-    top: 15px;
+    width: 28px; /* Larger dot */
+    height: 28px;
+    right: -15px; /* Adjust for larger dot */
+    background-color: #FF69B4; /* Hot Pink for dot */
+    border: 5px solid #FBF0E4; /* Background color border for contrast */
+    top: 20px; /* Adjust vertical position */
     border-radius: 50%;
     z-index: 1;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Deeper shadow */
 }
 
 .timeline-event:nth-child(odd) {
     left: 0;
+    text-align: right; /* Align text right for odd events */
 }
 
 .timeline-event:nth-child(even) {
     left: 50%;
-    margin-left: 40px;
+    margin-left: 50px; /* More margin */
+    text-align: left; /* Align text left for even events */
+}
+
+.timeline-event:nth-child(odd)::after {
+    left: auto;
+    right: -15px;
 }
 
 .timeline-event:nth-child(even)::after {
-    left: -11px;
+    left: -15px; /* Adjust for larger dot */
+    right: auto;
 }
 
 .timeline-content {
-    padding: 20px;
-    background-color: #FFE4E1; /* Misty Rose */
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 30px; /* More padding */
+    background-color: white; /* Clean white for content cards */
+    border-radius: 18px; /* More rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* Stronger, softer shadow */
+    border: 1px solid rgba(255, 105, 180, 0.3); /* Subtle pink border */
 }
 
-.timeline-content img {
+.timeline-content img, .timeline-content video {
     max-width: 100%;
-    border-radius: 5px;
-    margin-bottom: 1em;
+    border-radius: 8px; /* Slightly more rounded images/video */
+    margin-bottom: 1.5em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .love-word {
-    background-color: #FF69B4; /* Hot Pink button */
+    background: linear-gradient(45deg, #FF6F61 0%, #DE4E3F 100%); /* Warm, vibrant gradient button */
     color: white;
     border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
+    padding: 12px 25px; /* Larger padding */
+    border-radius: 30px; /* More rounded, pill-like */
     cursor: pointer;
-    font-size: 0.9em;
-    margin-top: 1em;
+    font-size: 1.05em; /* Slightly larger font */
+    margin-top: 1.8em; /* More space */
+    transition: all 0.3s ease; /* Smooth transition for hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* Stronger shadow */
+    outline: none;
+}
+
+.love-word:hover {
+    transform: translateY(-5px); /* More pronounced lift effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); /* Even more pronounced shadow */
+    background: linear-gradient(45deg, #DE4E3F 0%, #FF6F61 100%); /* Reverse gradient on hover */
 }
 
 .love-popup {
@@ -134,164 +186,216 @@ p {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    border-radius: 20px; /* More rounded */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Very prominent shadow */
     z-index: 1000;
-    max-width: 400px;
+    max-width: 500px; /* Wider popup */
     text-align: center;
-    border: 2px solid #FF69B4;
+    border: 4px solid #FF6F61; /* Stronger border matching button */
 }
 
 .love-popup p {
-    font-size: 1.1em;
-    margin-bottom: 1.5em;
+    font-size: 1.25em; /* Larger text */
+    margin-bottom: 1.8em;
+    color: #333;
+    font-family: 'Playfair Display', serif;
 }
 
 .love-popup .close-popup {
-    background-color: #FF69B4;
+    background: linear-gradient(45deg, #DE4E3F 0%, #FF6F61 100%); /* Matching button gradient */
     color: white;
     border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 25px;
     cursor: pointer;
+    font-size: 1.0em;
+    transition: all 0.3s ease;
 }
 
-/* Future Adventures Section - Minimal */
+.love-popup .close-popup:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(45deg, #FF6F61 0%, #DE4E3F 100%);
+}
+
+/* Future Adventures Section */
 .future-adventures-section {
-    max-width: 800px;
-    margin: 4em auto 3em auto;
-    padding: 3em 15px;
+    max-width: 1000px; /* Even wider section */
+    margin: 5em auto 4em auto;
+    padding: 5em 40px; /* More padding */
     text-align: center;
-    background-color: #F8F8FF; /* Ghost White */
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #FDF6F0; /* Light peach-beige */
+    border-radius: 25px; /* More rounded */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18); /* Enhanced shadow */
+    border: 2px solid rgba(255, 105, 180, 0.4); /* More prominent subtle border */
 }
 
 .future-adventures-section h2 {
-    font-size: 2em;
+    font-size: 3em;
     margin-bottom: 1em;
-    color: #8A2BE2;
+    color: #6A0572; /* Deeper, richer purple */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 .section-subtitle {
-    font-style: italic;
-    color: #555;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    color: #777; /* Softer grey */
+    font-size: 1.2em;
+    margin-bottom: 2em;
 }
 
 .adventure-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly larger cards */
+    gap: 30px;
     justify-content: center;
-    padding: 0 10px;
-    margin-top: 2em;
+    padding: 0 15px;
+    margin-top: 3em;
 }
 
 .adventure-card {
     background-color: white;
-    border: 1px solid #FFD1DC;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* More rounded */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Initial subtle shadow */
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: all 0.4s ease;
     text-align: left;
 }
 
 .adventure-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px); /* More pronounced lift */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
 }
 
 .adventure-card img {
     width: 100%;
-    height: 150px;
-    object-fit: contain; /* Changed to contain to ensure entire image is visible */
-    border-bottom: 1px solid #FFD1DC;
+    height: 180px; /* Slightly taller images */
+    object-fit: contain; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .adventure-card h3 {
-    font-size: 1.4em;
-    color: #A0522D;
-    padding: 10px 15px 5px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em; /* Larger */
+    color: #7A3B2E; /* Darker sienna */
+    padding: 18px 20px 10px;
     margin: 0;
+    text-align: center;
 }
 
 .adventure-details {
     display: none;
-    padding: 10px 15px 15px;
-    border-top: 1px dashed #FFD1DC;
-    font-size: 0.95em;
+    padding: 15px 20px 20px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.15); /* Softer dashed border */
+    font-size: 1.0em;
     color: #666;
 }
 
 .adventure-details p {
-    margin-bottom: 1em;
+    margin-bottom: 1.2em;
 }
 
 .adventure-details .close-adventure-details {
-    background-color: #FF69B4;
+    background: linear-gradient(45deg, #FF6F61 0%, #DE4E3F 100%); /* Matching button gradient */
     color: white;
     border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
+    padding: 10px 20px;
+    border-radius: 25px;
     cursor: pointer;
-    font-size: 0.8em;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Final Message Section - Minimal */
+.adventure-details .close-adventure-details:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #DE4E3F 0%, #FF6F61 100%);
+}
+
+/* Final Message Section */
 .final-message {
     text-align: center;
-    margin-top: 4em;
-    padding: 30px;
-    background-color: #FFE4E1;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    margin-top: 6em; /* More space */
+    padding: 60px;
+    background-color: #FBF0E4; /* Light Beige */
+    border-radius: 30px; /* More rounded */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    max-width: 900px; /* Wider */
     margin-left: auto;
     margin-right: auto;
+    border: 3px solid rgba(255, 105, 180, 0.5); /* More prominent subtle border */
+    position: relative;
+    overflow: hidden;
+}
+
+.final-message::before {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 105, 180, 0.1); /* Subtle pink overlay */
+    border-radius: 50%;
+    transform: rotate(20deg);
 }
 
 .final-message h2 {
-    font-size: 2.2em;
-    color: #4B0082;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5em; /* Larger, more impactful */
+    color: #6A0572; /* Richer deep purple */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+    margin-bottom: 0.8em;
 }
 
 .final-message p {
-    font-size: 1.1em;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25em;
+    margin-bottom: 1.5em;
+    color: #333;
 }
 
 .final-message .signature {
+    font-family: 'Playfair Display', serif;
     font-style: italic;
-    margin-top: 2em;
-    font-size: 1.2em;
-    color: #8A2BE2;
+    margin-top: 3em; /* More space */
+    font-size: 1.5em;
+    color: #703070; /* Deeper tone */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Media Queries - Minimal (still responsive) */
+/* Media Queries */
 @media screen and (max-width: 768px) {
-    h1 { font-size: 2em; }
-    h2 { font-size: 1.8em; }
-    p { font-size: 0.9em; }
-    .timeline::before { left: 15px; margin-left: -1px; }
-    .timeline-event { width: 100%; padding-left: 40px; margin-left: 0; }
+    h1 { font-size: 2.8em; }
+    .subtitle { font-size: 1.1em; }
+    h2 { font-size: 2.2em; }
+    p { font-size: 1em; }
+
+    .timeline::before { left: 15px; margin-left: -2px; }
+    .timeline-event { width: 100%; padding-left: 50px; margin-left: 0; }
+    .timeline-event:nth-child(odd) { text-align: left; }
     .timeline-event:nth-child(even) { left: 0; margin-left: 0; }
-    .timeline-event::after, .timeline-event:nth-child(even)::after {
-        left: 8px; width: 18px; height: 18px; top: 12px; border-width: 2px;
+    .timeline-event::after, .timeline-event:nth-child(odd)::after {
+        left: 8px; right: auto; width: 22px; height: 22px; top: 15px; border-width: 3px;
     }
-    .timeline-content { padding: 15px; }
-    .love-popup { padding: 20px; max-width: 95%; }
-    .love-popup p { font-size: 1.05em; }
-    .love-popup h3 { font-size: 1.6em; }
+    .timeline-event:nth-child(even)::after { left: 8px; }
 
-    .future-adventures-section { padding: 2em 15px; }
-    .adventure-grid { grid-template-columns: 1fr; gap: 20px; }
-    .adventure-card h3 { font-size: 1.4em; }
-    .adventure-details { font-size: 0.95em; }
+    .timeline-content { padding: 25px; border-radius: 15px; }
+    .love-popup { padding: 30px; max-width: 95%; border-radius: 15px; }
+    .love-popup p { font-size: 1.1em; }
 
-    .final-message { padding: 25px; margin-top: 3em; }
-    .final-message h2 { font-size: 2.2em; }
-    .final-message p { font-size: 1em; }
-    .final-message .signature { font-size: 1.1em; }
+    .future-adventures-section { padding: 3em 20px; border-radius: 20px; }
+    .adventure-grid { grid-template-columns: 1fr; gap: 25px; }
+    .adventure-card h3 { font-size: 1.6em; padding: 15px; }
+    .adventure-details { font-size: 0.95em; padding: 15px; }
+
+    .final-message { padding: 40px; margin-top: 5em; border-radius: 20px; }
+    .final-message h2 { font-size: 2.8em; }
+    .final-message p { font-size: 1.1em; }
+    .final-message .signature { font-size: 1.3em; }
 }
